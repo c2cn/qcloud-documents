@@ -2,10 +2,13 @@
 该任务指导您通过 Serverless Website 组件，快速构建一个 Serverless Hexo 站点。 
 
 ## 前提条件
-- 已安装 [Node.js](https://nodejs.org/en/)（Node.js 版本需不低于8.6，建议使用 Node.js10.0 及以上版本）
+- 已安装 [Node.js](https://nodejs.org/en/)（**2020年9月1日起，Serverless 组件不再支持 Node.js10.0 以下版本，请注意升级**）
 - 已安装 [Git](https://git-scm.com/)
 
 如您未安装上述应用程序，可以参考 [Hexo 安装说明](https://hexo.io/zh-cn/docs/)。
+
+
+
 
 ## 操作步骤
 ### 1. 安装
@@ -60,7 +63,7 @@ $ touch serverless.yml
 
 component: website # (必填) 引用 component 的名称，当前用到的是 tencent-website 组件
 name: hexodemo # (必填) 该 website 组件创建的实例名称
-org: test # (可选) 用于记录组织信息，默认值为您的腾讯云账号 APPID
+
 app: websiteApp # (可选) 该 website 应用名称
 stage: dev # (可选) 用于区分环境信息，默认值是 dev
 
@@ -143,3 +146,6 @@ TENCENT_SECRET_KEY=123
 >?
 >- 如果没有腾讯云账号，请先 [注册新账号](https://cloud.tencent.com/register)。
 >- 如果已有腾讯云账号，可以在 [API 密钥管理](https://console.cloud.tencent.com/cam/capi) 中获取 SecretId 和 SecretKey。
+
+
+

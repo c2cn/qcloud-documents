@@ -47,7 +47,7 @@ __参数__
 
 ### setPlayListener
 
-设置推流回调接口。
+设置播放回调接口。
 ```
 void setPlayListener(ITXLivePlayListener listener)
 ```
@@ -465,7 +465,7 @@ __参数__
 
 ***
 
-<span id="addVideoRawData"></span>
+[](id:addVideoRawData)
 ## 自定义数据处理
 ### addVideoRawData
 
@@ -498,6 +498,7 @@ void setVideoRawDataListener(final ITXVideoRawDataListener listener)
 
 >?
 >- 此功能会有一定的性能开销，特别是在高分辨率的情况下。
+>- 调用前需先调用 addVideoRawData 设置数据载体。
 >- 除非您有特殊的需求，否则不建议您开启。
 
 ***
@@ -733,7 +734,7 @@ __功能__
 播放器音量大小回调。
 
 
-<span id="onAudioVolumeEvaluationNotify"></span>
+[](id:onAudioVolumeEvaluationNotify)
 ### onAudioVolumeEvaluationNotify
 
 播放器音量大小回调。

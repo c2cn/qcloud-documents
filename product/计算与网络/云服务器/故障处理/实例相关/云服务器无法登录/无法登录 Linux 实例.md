@@ -1,3 +1,6 @@
+以下视频介绍了无法登录 Linux 实例时的排查方法：
+<div class="doc-video-mod"><iframe src="https://cloud.tencent.com/edu/learning/quick-play/3398-59999?source=gw.doc.media&withPoster=1&notip=1"></iframe></div>
+
 本文主要介绍无法连接 Linux 实例时对问题进行排查的方法，以及可能导致无法连接 Linux 实例的主要原因，指导您排查、定位并解决问题。
 
 ## 可能原因
@@ -6,7 +9,6 @@
 - [密码问题导致无法登录](#CryptographicProblem)
 - [带宽利用率过高](#BandwidthUtilization)
 - [服务器高负载](#HighServerLoad)
-- [远程端口配置异常](#RemotePortConfiguration)
 - [安全组规则不当](#SafetyGroupRule)
 
 ## 使用自助诊断工具
@@ -54,13 +56,6 @@
 **处理步骤**：
 1. 通过 [VNC 登录](#VNC) 登录实例。
 2. 参考 [Linux 实例：CPU 与内存占用率高导致无法登录](https://cloud.tencent.com/document/product/213/10310)，在 “任务管理器” 中定位高负载的进程。
-
-
-<span id="RemotePortConfiguration"></span>
-### 远程端口配置异常
-**故障现象**：远程无法连接，远程访问端口非默认端口、被修改或者22端口没打开。
-**定位思路**：是否能 ping 通实例的公网 IP，通过 telnet 命令检测端口是否打开。
-**处理步骤**：具体操作可参考 [端口问题导致无法远程登录](https://cloud.tencent.com/document/product/213/10232)。
 
 <span id="SafetyGroupRule"></span>
 ### 安全组规则不当

@@ -1,3 +1,4 @@
+
 ## 相关说明
 云数据库 MongoDB 默认提供 rwuser 和 mongouser 两个用户名，分别支持 MONGODB-CR 和 SCRAM-SHA-1 两种认证方式，对于这两种认证方式，连接 URI 需要做不同的处理，具体参见 [连接实例](https://cloud.tencent.com/document/product/240/7092)。
 
@@ -5,7 +6,6 @@
 
 ## 快速开始
 ### Python 示例代码 1
-
 ```
 #!/usr/bin/python
 import pymongo
@@ -29,7 +29,6 @@ for i in content:
 ```
 
 ###  Python 示例代码 2
-
 ```
 #!/usr/bin/python
 import pymongo
@@ -48,7 +47,6 @@ for doc in db.somecoll.find({"somekey":"yiqihapi"}):
 ```
 
 输出：
-
 ```
 5734431e101e2f6d699b37ef
 {u'somekey': u'yiqihapi', u'_id': ObjectId('5734431e101e2f6d699b37ef')}

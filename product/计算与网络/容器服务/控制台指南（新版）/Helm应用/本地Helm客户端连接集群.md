@@ -8,7 +8,7 @@
 
 依次执行以下命令，下载 Helm 客户端。关于安装 Helm 的更多信息，请参见 [Installing Helm](https://helm.sh/docs/intro/install/)。
 ```
- curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 ```
 ```
 chmod 700 get_helm.sh
@@ -42,4 +42,7 @@ Helm Client 使用 TKE 生成的客户端证书访问集群，具体操作步骤
 ```
 helm  install ....  --kubeconfig [kubeconfig所在路径]
 ```
+
+
+
 

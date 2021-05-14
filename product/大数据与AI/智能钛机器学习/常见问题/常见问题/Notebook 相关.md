@@ -22,13 +22,11 @@
 Notebook 中默认用 tione 账户运行，如果在使用中需要切换到 root 账户，则需要做以下操作：
 1. 创建 Notebook 时选择开启 root 权限。
 2. 在笔记本或者终端里通过 "sudo su -" 切换成 root。 
-
 ![img](https://main.qcloudimg.com/raw/d7a7a51ffbc2d4a5ef280b8829d28613.png)
 
 ###  Notebook 中使用 GPU 资源时，如何查看 CUDA 的版本信息？
-在终端里通过 "nvidia-smi" 查看。 
+进入 Notebook 实例内部，在 Terminal 中执行 `nvidia-smi` 命令进行查看，如下图所示： 
 ![img](https://main.qcloudimg.com/raw/8183b761851987a0cad28e68da219de9.png)
 
 ### 如果在 Notebook 终端里面切换内核？
 可以通过 source activate 命令切换，支持以下内核：mxnet_py2、mxnet_py3、python2、python3、pytorch_py2 、pytorch_py3、tensorflow2_py3、tensorflow_py2、tensorflow_py3。例子：source activate tensorflow2_py3
-

@@ -1,3 +1,133 @@
+### 2.6.0.94 @ 2021.05.08
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.6.0.94.zip)
+
+- 重要特性：
+    1. 支持最新的转码方案，具体请看[新文档转码](../开发指南/新文档转码/快速接入.md)
+
+- 新增接口：
+   1. 增加[设置单次擦除图层数量(setEraseLayerLimit)]
+   2. 增加[限制橡皮擦可擦除的数据类型(setEraseLayerType)]
+
+- 优化:  
+   1. 涂鸦绘制性能优化  
+   2. 激光笔移动性能优化  
+   3. 激光笔多端同步效果优化  
+   4. PPT、图片元素加载  
+   5. 涂鸦超出白板区域时框选范围错误  
+   6. 优化白板渲染时的重排、重绘操作  
+
+- bug修复:  
+   1. 截图时文本元素被iframe元素遮挡  
+   2. 直线碰撞检测计算错误  
+   3. 其他若干已知问题  
+
+### 2.5.7.86 @ 2021.02.04
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.7.86.zip)
+
+- 新增接口：
+   1. 增加移动白板接口(setScaleAnchor)
+   2. 增加是否在画线过程中显示远端画笔接口(setRemoteCursorVisible)
+   3. 音频元素-设置音量大小(setAudioVolume)
+   4. 音频元素-获取音量大小(getAudioVolume)
+   5. 增加设置缩放工具的缩放比例(setScaleToolRatio)
+   6. 增加添加资源主备域名映射(addBackupDomain)
+   7. 增加删除资源主备域名映射(removeBackupDomain)  
+
+- 新增事件:
+   1. 删除元素事件  
+
+- 新增初始化参数： 
+   1. 增加初始化参数，关闭移动工具的缩放功能 enableScaleTool  
+
+- 优化：
+  1. 添加H5PPT, 图片元素(imageElement)/图片文件(imagesFile)，背景图片，视频等资源支持指定主备Url，需要配合增加备用域名接口使用。
+  2. 静态PPT翻页交互效果优化
+  3. 整点选框样式
+  4. 激光笔功能性能优化Bug 修复   
+ 
+- bug修复：
+  1. 图片旋转后缩放比例不对的问题
+  2. chrome 88版本纵向滚动条缺失
+  3. 滚动条触发异常滚动问题
+  4. 添加自定义元素时点选框范围错误
+  5. 文本工具相关问题
+  6. 其他若干已知问题
+### 2.5.6.85 @ 2020.12.14
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.6.85.zip)
+
+- 新增接口：
+    - 增加是否启用原生系统光标接口 setSystemCursorEnable
+        - 开启该功能后画笔图标和激光笔图标将使用系统的光标样式来实现，画笔图标和激光笔图标在本地会有一丢丢的流畅度提升。
+        - 开启该功能后会出现画笔图标和涂鸦有一点延迟现象，属于正常现象。
+        - 开启该功能 Mac 端在一些情况下会导致光标变成默认的鼠标指针，如消息弹窗等行为，属于正常现象。
+    - 增加设置画笔和激光笔工具的提示语接口 setToolTypeTitle
+    - 支持音频元素
+        - 新增音频 addElement
+        - 播放音频 playAudio
+        - 暂停音频 pauseAudio
+        - 跳转进度 seekAudio
+        - 是否启用音频控制面板 enableAudioControl
+- 新增特性：
+    - 点选和框选工具合并
+    - 激光笔和画笔支持多人
+- 体验优化：
+    - 选择工具，橡皮擦选中精度优化。
+
+### 2.5.5.83 @ 2020.12.03 
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.5.83.zip)
+- Bug 修复   
+  - 修复 WebView 远程调试漏洞
+  - 替换日志模块，防止内存泄漏
+
+### 2.5.5.71 @ 2020.11.09
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.5.71.zip)
+
+- 新增特性：
+    - 新增文字工具预设文本内容 setNextTextInput
+    - 优化白板缩放工具，支持鼠标滚轮缩放，焦点缩放，按 shift 键缩小交互方式
+    - TEduBoardToolType 新增自定义图形工具
+    - 新增 addElement 接口，支持添加自定义图形的元素
+    - 新增 onTEBAddElement 回调
+    - 新增白板放大后显示滚动条
+- Bug 修复
+    - 修复偶现画笔不消失的 bug
+    
+### 2.5.4.67 @ 2020.10.15
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.4.67.zip)
+
+- 新增工具类型
+    - 新增正圆，正方形工具类，同时支持椭圆工具和矩形工具按 shift 键画正圆和正方形
+- 优化
+    - 优化橡皮擦擦除箭头工具不精确的问题
+- Bug 修复
+    - 修复多端同时移动图片元素不同步的问题
+    - 修复其他已知问题
+
+### 2.5.3.61 @ 2020.08.31
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.3.61.zip)
+
+- 新增回调
+    - 新增视频状态回调 TEDU_BOARD_VIDEO_STATUS_WAITING 和 TEDU_BOARD_VIDEO_STATUS_PLAYING
+- Bug 修复
+    - 修复激光笔各端显示比例不一致问题
+    - 修复白板操作在移动端偶现延迟问题
+    - 修复涂鸦到白板外笔迹微变问题
+- 优化
+    - 桌面端画笔使用时持续展示
+    - 视频多次播放失败后回调 ERROR 状态
+    - 日志上报相关优化
+    
+### 2.5.2.49 @ 2020.08.18
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.2.49.zip)
+- WebView 版本更新
+    -Android 10及以上版本强制使用系统 WebView
+
+### 2.5.2.48 @ 2020.08.07
+* [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.2.48.zip)
+
+- 新增回调
+    - 新增 H5PPT 状态回调 onTEBH5PPTStatusChanged
+    
 ### 2.5.1.47 @ 2020.07.23
 * [单击下载 SDK](https://sdk.qcloudtiw.com/android/TEduBoardSdk_2.5.1.47.zip)
 

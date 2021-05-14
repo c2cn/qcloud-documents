@@ -15,7 +15,7 @@
 - 已在访问管理控制台 >【[API密钥管理](https://console.cloud.tencent.com/cam/capi)】页面获取 SecretID 和 SecretKey。
  - SecretID 用于标识 API 调用者的身份。
  - SecretKey 用于加密签名字符串和服务器端验证签名字符串的密钥，**SecretKey 需妥善保管，避免泄露**。
-- 已获取调用地址（endpoint），短信的调用地址为`sms.tencentcloudapi.com`。
+- 短信的调用地址为`sms.tencentcloudapi.com`。
 
 ## 相关资料
 - 各个接口及其参数的详细介绍请参见 [API 文档](https://cloud.tencent.com/document/product/382/38764)。
@@ -64,7 +64,8 @@ namespace TencentCloudExamples
                  * 实例化一个认证对象，入参需要传入腾讯云账户密钥对 secretId 和 secretKey
                  * 本示例采用从环境变量读取的方式，需要预先在环境变量中设置这两个值
                  * 您也可以直接在代码中写入密钥对，但需谨防泄露，不要将代码复制、上传或者分享给他人
-                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi*/
+                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi
+                 */
                 Credential cred = new Credential {
                     SecretId = "xxx",
                     SecretKey = "xxx"
@@ -112,7 +113,8 @@ namespace TencentCloudExamples
 	             * SDK 提供对基本类型的指针引用封装函数
 	             * 帮助链接：
 	             * 短信控制台：https://console.cloud.tencent.com/sms/smslist
-	             * sms helper：https://cloud.tencent.com/document/product/382/3773 */
+	             * sms helper：https://cloud.tencent.com/document/product/382/3773
+	             */
                 
 			        	/* 模板名称 */
                 req.TemplateName = "腾讯云";
@@ -129,7 +131,7 @@ namespace TencentCloudExamples
             
                 // 通过 client 对象调用 AddSmsTemplate 方法发起请求，注意请求方法名与请求对象是对应的
                 // 返回的 resp 是一个 AddSmsTemplateResponse 类的实例，与请求对象对应
-                AddSmsTemplateResponse resp = client.AddSmsTemplate(req);
+                AddSmsTemplateResponse resp = client.AddSmsTemplateSync(req);
 
                 // 输出 JSON 格式的字符串回包
                 Console.WriteLine(AbstractModel.ToJsonString(resp));
@@ -167,7 +169,8 @@ namespace TencentCloudExamples
                  * 实例化一个认证对象，入参需要传入腾讯云账户密钥对 secretId 和 secretKey
                  * 本示例采用从环境变量读取的方式，需要预先在环境变量中设置这两个值
                  * 您也可以直接在代码中写入密钥对，但需谨防泄露，不要将代码复制、上传或者分享给他人
-                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi*/
+                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi
+                 */
                 Credential cred = new Credential {
                     SecretId = "xxx",
                     SecretKey = "xxx"
@@ -215,7 +218,8 @@ namespace TencentCloudExamples
 	             * SDK 提供对基本类型的指针引用封装函数
 	             * 帮助链接：
 	             * 短信控制台：https://console.cloud.tencent.com/sms/smslist
-	             * sms helper：https://cloud.tencent.com/document/product/382/3773 */
+	             * sms helper：https://cloud.tencent.com/document/product/382/3773
+	             */
                 
                 req.SmsSdkAppid = "1400787878";
                 /* 短信签名内容: 使用 UTF-8 编码，必须填写已审核通过的签名，可登录 [短信控制台] 查看签名信息 */
@@ -237,7 +241,7 @@ namespace TencentCloudExamples
 
                 // 通过 client 对象调用 SendSms 方法发起请求，注意请求方法名与请求对象是对应的
                 // 返回的 resp 是一个 SendSmsResponse 类的实例，与请求对象对应
-                SendSmsResponse resp = client.SendSms(req);
+                SendSmsResponse resp = client.SendSmsSync(req);
 
                 // 输出 JSON 格式的字符串回包
                 Console.WriteLine(AbstractModel.ToJsonString(resp));
@@ -276,7 +280,8 @@ namespace TencentCloudExamples
                  * 实例化一个认证对象，入参需要传入腾讯云账户密钥对 secretId 和 secretKey
                  * 本示例采用从环境变量读取的方式，需要预先在环境变量中设置这两个值
                  * 您也可以直接在代码中写入密钥对，但需谨防泄露，不要将代码复制、上传或者分享给他人
-                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi*/
+                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi
+                 */
                 Credential cred = new Credential {
                     SecretId = "xxx",
                     SecretKey = "xxx"
@@ -333,7 +338,7 @@ namespace TencentCloudExamples
 
                 // 通过 client 对象调用 PullSmsSendStatus 方法发起请求，注意请求方法名与请求对象是对应的
                 // 返回的 resp 是一个 PullSmsSendStatusResponse 类的实例，与请求对象对应
-                PullSmsSendStatusResponse resp = client.PullSmsSendStatus(req);
+                PullSmsSendStatusResponse resp = client.PullSmsSendStatusSync(req);
 
                 // 输出 JSON 格式的字符串回包
                 Console.WriteLine(AbstractModel.ToJsonString(resp));
@@ -369,7 +374,8 @@ namespace TencentCloudExamples
                  * 实例化一个认证对象，入参需要传入腾讯云账户密钥对 secretId 和 secretKey
                  * 本示例采用从环境变量读取的方式，需要预先在环境变量中设置这两个值
                  * 您也可以直接在代码中写入密钥对，但需谨防泄露，不要将代码复制、上传或者分享给他人
-                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi*/
+                 * CAM 密匙查询：https://console.cloud.tencent.com/cam/capi
+                 */
                 Credential cred = new Credential {
                     SecretId = "xxx",
                     SecretKey = "xxx"
@@ -417,7 +423,8 @@ namespace TencentCloudExamples
 	             * SDK 提供对基本类型的指针引用封装函数
 	             * 帮助链接：
 	             * 短信控制台：https://console.cloud.tencent.com/sms/smslist
-	             * sms helper：https://cloud.tencent.com/document/product/382/3773 */
+	             * sms helper：https://cloud.tencent.com/document/product/382/3773
+	             */
                 
 				/* 短信应用 ID: 在 [短信控制台] 添加应用后生成的实际 SDKAppID，例如1400006666 */
 				req.SmsSdkAppid = "1400009099";
@@ -433,7 +440,7 @@ namespace TencentCloudExamples
 
                 // 通过 client 对象调用 SendStatusStatistics 方法发起请求，注意请求方法名与请求对象是对应的
                 // 返回的 resp 是一个 SendStatusStatisticsResponse 类的实例，与请求对象对应
-                SendStatusStatisticsResponse resp = client.SendStatusStatistics(req);
+                SendStatusStatisticsResponse resp = client.SendStatusStatisticsSync(req);
 
                 // 输出 JSON 格式的字符串回包
                 Console.WriteLine(AbstractModel.ToJsonString(resp));

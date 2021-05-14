@@ -1,3 +1,4 @@
+
 ## 相关说明
 云数据库 MongoDB 默认提供 rwuser 和 mongouser 两个用户名，分别支持 MONGODB-CR 和 SCRAM-SHA-1 两种认证方式，对于这两种认证方式，连接 URI 需要做不同的处理，具体参见 [连接实例](https://cloud.tencent.com/document/product/240/7092)。
 
@@ -59,7 +60,6 @@ docs: [ { _id: 567a1bf26773935b3ff0b42a, a: 1, something: 'yy' } ]
 ```
 
 ## Node.js mongoose 连接示例
-
 ```
 var dbUri = "mongodb://" + user + ":" + password + "@" + host + ":" + port + "/" + dbName;
 var opts = {

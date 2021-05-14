@@ -1,3 +1,7 @@
+>?云监控 Dashborad 全新改版，已于近期上线，欢迎大家使用新版 Dashboard 监控云上服务性能。旧版 Dashboard 即将下线，如需访问旧版文档，请参见 [旧版 Dashboard](https://cloud.tencent.com/document/product/248/13118)。
+
+
+
 本文将为您介绍如何使用 Dashboard全局配置。
 
 ## Dashboard 全局配置
@@ -20,7 +24,7 @@
 
 1. 新建模板变量。
 	单击【模板管理页】>【新增】，定义完模板变量信息后单击【确认】即可。
-![](https://main.qcloudimg.com/raw/84f4a6d0feb1aa68ce7fe184e02cb5c3.png)		 
+	![](https://main.qcloudimg.com/raw/84f4a6d0feb1aa68ce7fe184e02cb5c3.png)		 
 2. 编辑、删除模板变量。
 在模板变量列表中您可以进行模板变量的删除和编辑。
 ![](https://main.qcloudimg.com/raw/2ce8f088a373b4fa63da4ec7e0627b8f.png)
@@ -41,6 +45,7 @@
   - 新选项卡：新标签打开链接
 - 当前页：当前标签打开链接
   
+
 ![](https://main.qcloudimg.com/raw/5f5d1cb38d63216df376e183a2836d93.png)
 
 ### JSON
@@ -77,7 +82,7 @@ JSON包含 Dashboard 的属性、模板变量、面板查询等字段，您可�
 | Panels      | 图表配置 ，请参考 [Panels](#step3)                        |
 | Time        | Dashboard 的时间范围                              |
 
-**<span id="step1">Templating</sapan>**
+**[](id:step1)Templating</sapan>**
 
 ```
 "Templating": [ // 模板变量
@@ -93,7 +98,7 @@ JSON包含 Dashboard 的属性、模板变量、面板查询等字段，您可�
 	]
 ```
 
-**<span id="step2">Link</span>**
+**[](id:step2)Link**
 
 ```
 "Links": [ // Dashboard链接
@@ -109,7 +114,7 @@ JSON包含 Dashboard 的属性、模板变量、面板查询等字段，您可�
 	]
 ```
 
-**<span id="step3">Panels</span>**
+**[](id:step3)Panels**
 
 ```
 "Panels": [ // panel配置

@@ -2,7 +2,7 @@
 
 Guetzli 图片压缩是数据万象推出的视觉无损压缩服务，能够对 JPG、JPEG 图像进行高比例压缩，为使用者节省下载流量，加快下载速度，提升体验。算法利用人眼对于部分色域及图片细节的不敏感性，在不影响视觉效果的前提下有选择地丢弃细节信息，在相同质量条件下处理后的图片比原图节省约35% - 50%的图片大小。
 
-为筛选出最佳压缩图片（满足压缩和无损需求），Guetzli 压缩对于每一张图片均会进行多种等级的压缩处理，因此处理时长相对于普通压缩算法较长，更适合**非实时**图片应用场景。若您对压缩时延要求较高，我们为您推荐 [图片高级压缩服务](https://tencent.com/document/product/460/47501)。
+为筛选出最佳压缩图片（满足压缩和无损需求），Guetzli 压缩对于每一张图片均会进行多种等级的压缩处理，因此处理时长相对于普通压缩算法较长，更适合**非实时**图片应用场景。若您对压缩时延要求较高，我们为您推荐 [图片高级压缩服务](https://cloud.tencent.com/document/product/460/47501)。
 
 
 >?
@@ -13,7 +13,7 @@ Guetzli 图片压缩是数据万象推出的视觉无损压缩服务，能够对
 
 ## 功能体验
 
-您可在线体验 Guetzli 压缩功能，点击前往 [数据万象体验馆](https://cloud.tencent.com/act/pro/pictureSlimming)。
+您可在线体验 Guetzli 压缩功能，单击前往 [数据万象体验馆](https://cloud.tencent.com/act/pro/ciExhibition)。
 
 
 ## 适用场景
@@ -37,13 +37,13 @@ Guetzli 压缩可满足在线教育作业、课件图等压缩处理的需求，
 
 ## 使用方法
 
-### 服务开启与关闭
+#### 服务开启与关闭
 
 您可通过以下两种方式开通或关闭 Guetzli 图片压缩服务。
 
 - 控制台方式：您可通过数据万象控制台可视化开启或关闭服务，详情请查看 [Guetzli 图片压缩](https://cloud.tencent.com/document/product/460/46820) 控制台文档。
 - API 方式：您可通过 Guetzli 图片压缩的 API 接口 [开启](https://cloud.tencent.com/document/product/460/30112) 或 [关闭](https://cloud.tencent.com/document/product/460/30113) 服务。
 
-### 查询开通状态
+#### 查询开通状态
 
 您可通过 [API 接口](https://cloud.tencent.com/document/product/460/30111) 查询服务开通与否。

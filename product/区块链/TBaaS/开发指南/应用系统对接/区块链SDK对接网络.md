@@ -1,63 +1,74 @@
-# 区块链SDK对接网络
+>! 区块链 SDK 对接网络调用方式仅支持 Fabric 网络。
 
-应用系统如果调用频率较高，则需要直接使用区块链SDK与区块链网络对接。这种情况下**应用系统应部署在与区块链网络同一地域内的CVM上**。在云API调用方式中，需要应用系统提供账户的SecretID和SecretKey，用于认证授权访问权限；而在区块链SDK中，则需要应用系统在TBaaS控制台上申请用于访问的证书（节点证书和nginx证书）。
+若应用系统调用频率较高，则需要直接使用区块链 SDK 与区块链网络对接。这种情况下**应用系统应部署在与区块链网络同一地域内的云服务器 CVM 上**。在云 API 调用方式中，需要应用系统提供账户的 SecretID 和 SecretKey，用于认证授权访问权限。而在区块链 SDK 中，则需要应用系统在 [TBaaS 控制台](https://console.cloud.tencent.com/tbaas/overview) 上申请用于访问的证书（节点证书和 nginx 证书）。如下图所示：
+![img](https://main.qcloudimg.com/raw/81e1898de06b79a0b848345a72e4df4c.png)            
+如果应用在开发测试中希望在本地访问区块链网络，则可以开启并使用网络的外网域名，使用该域名访问区块链网络的代理组件。这种访问方式仅适用于开发调试，在生产环境中推荐使用访问管理打通 VPC 的方式。
 
-​            ![img](https://main.qcloudimg.com/raw/81e1898de06b79a0b848345a72e4df4c.png)            
 
-如果应用在开发测试中希望在本地访问区块链网络，则可以开启并使用网络的外网域名，使用该域名访问区块链网络的代理组件。这种访问方式仅适用于开发调试。在生产环境中强烈推荐使用访问管理打通VPC的方式。
+两种访问方式都需要在“访问管理”标签页中获取访问端地址，分别为“外网域名”和“访问端地址”。其区别可参考以下表格：
 
-除了支持社区版区块链SDK（Java、NodeJS、Golang），TBaaS对Java版的社区区块链SDK进行了定制（tbaas-fabric-sdk-java），简化了应用系统与区块链网络连接的流程。
+| VPC访问                                | 外网访问                   |
+| ------------------------------------- | -------------------------- |
+| 使用内网地址，无法在本地访问。                                | 使用公网域名，可在本地访问。 |
+| 性能高。                                                       | 性能低。                     |
+| 可用于生产环境。                                               | 一般只用于调试。             |
+| 应用系统需要部署在与区块链节点同地域的VPC内，并在访问管理页面进行内网打通。 | 应用系统可部署在本地。       |
+
+
+
+
+
+
+除了支持社区版区块链 SDK（Java、NodeJS、Golang），TBaaS 对 Java 版的社区区块链 SDK 进行了定制（tbaas-fabric-sdk-java），简化了应用系统与区块链网络连接的流程。
 
 ## 获取访问地址及证书
+### VPC 访问
+1. 登录 [TBaaS 控制台](https://console.cloud.tencent.com/tbaas/overview)。
+2. 选择左侧导航栏中的【Fabric】>【区块链网络】，进入“区块链网络”页面。
+3. 在“区块链网络”页面中，选择需查看的网络，进入“访问管理”页面。
+4. 在“访问管理”页面中，单击【新建】。在弹出的“新建链接”窗口中，参考以下信息进行创建：
+![](https://main.qcloudimg.com/raw/aa9b66415677d8e0cc49a9fd6ab66015.png)
+  - 名称：即链接标识。
+  - 选择访问端：即选择应用系统所在的 VPC 和子网。
+5. 创建成功后即可获取 VPC 访问地址（记为 PROXY_URL），即访问端地址（内网地址）。如下图所示：
+![](https://main.qcloudimg.com/raw/86c7e8f4e7e4c51d83f1ab5c8aaef922.png)
+  在本端链接选项中单击【查看】，并下载 nginx 证书（记为TLS_CERT），保存在文件中。如下图所示：
+![](https://main.qcloudimg.com/raw/33ecdd5e5e06c82834716821db248a76.png)
 
-1. 获取访问地址（记为PROXY_URL），并下载nginx证书（记为TLS_CERT）
-
-   a)  VPC访问，访问地址为下图中的访问端地址
-
-   <img src="https://main.qcloudimg.com/raw/e6eb5c2f97f48f24805d83a2a3437e06.png" alt="img" style="zoom:30%;" />
-
-   <img src="https://main.qcloudimg.com/raw/8a75cb8188e0c00fcfb97a0391c0613a.png" alt="img" style="zoom:30%;" />
-
-   <img src="https://main.qcloudimg.com/raw/3923bce61d0849a879a9bf542d706cc4.png" alt="img" style="zoom:33%;" />
-
-​                上图的内容即为Nginx证书（TLS_CERT），保存在文件中。
-
-​	b)  外网访问（**仅用于开发测试**）
-
-<img src="https://main.qcloudimg.com/raw/800524c9ef8a5fdd329c732cfdd37763.png" alt="img" style="zoom:33%;" />
-
-- 前往 [OpenSSL](https://www.openssl.org/source/) 官网，下载 openssl 并配置安装。
-
-- 下载[ecccsr](https://tbaasdoc-1259695942.cos.ap-guangzhou.myqcloud.com/ecccsr.zip?_ga=1.59257006.2054822156.1595822583)工具，解压后执行sh ecccsr.sh，得到以下三个文件
+### 外网访问（仅用于开发测试）[](id:stepwaiwang)
+1. 登录 [TBaaS 控制台](https://console.cloud.tencent.com/tbaas/overview)。
+2. 选择左侧导航栏中的【Fabric】>【区块链网络】，进入“区块链网络”页面。
+3.  在“区块链网络”页面中，选择需查看的网络，进入“访问管理”页面。
+4.  在“访问管理”页面中，单击外网域名右侧的【开启】。如下图所示：
+![](https://main.qcloudimg.com/raw/423f571003ad6d7e549a68e78bb8253a.png)
+ 获取外网域名后并单击【nginx 证书下载】。
+![](https://main.qcloudimg.com/raw/105eabc138754834a377017c6fbaa805.png)
+5. 前往 [OpenSSL](https://www.openssl.org/source/) 官网，下载 openssl 并配置安装。
+6. 下载 [ecccsr](https://tbaasdoc-1259695942.cos.ap-guangzhou.myqcloud.com/ecccsr.zip?_ga=1.59257006.2054822156.1595822583) 工具，解压后执行 `sh ecccsr.sh`，得到以下三个文件：
   - out.key
   - out.csr
   - out_sk
 
-2. 在TBaaS控制台上传out.csr用于申请证书，申请流程如下图所示
 
-<img src="https://main.qcloudimg.com/raw/14db9e9f7a7134b9693ff0a47c319e5a.png" alt="img" style="zoom:33%;" />            
-
+### 申请证书流程
+1. 前往 [认证信息](https://console.cloud.tencent.com/developer/auth) 页面，查看企业名称。如下图所示：
 <img src="https://main.qcloudimg.com/raw/123d94ea2854ce6cf83f6ab71e7209a1.png" alt="img" style="zoom:40%;" />            
-
-![img](https://main.qcloudimg.com/raw/e8be3c9c8fee0e174137b1ec89178ddd.png)            
-
-<img src="https://main.qcloudimg.com/raw/9588c4c7a01d61d83ad7d073eb9f5300.png" alt="img" style="zoom:30%;" />            
-
-<img src="https://main.qcloudimg.com/raw/f237330223e3667ce0a46d06ff0b990d.png" alt="img" style="zoom:33%;" />            
-
-3. 下载上一步申请到的证书，记为USER_CERT
-
+2. 登录 [TBaaS 控制台](https://console.cloud.tencent.com/tbaas/overview)，选择左侧导航栏中的【Fabric】>【区块链网络】，进入“区块链网络”页面。
+4. 在“区块链网络”页面中，选择需查看的网络，进入“证书管理”页面。
+5. 在“证书管理”页面中单击【申请】，在“申请证书”弹窗中，填写认证信息中的企业名称。如下图所示：
+![](https://main.qcloudimg.com/raw/ff07dc48863aff4b78e452ad8d61f4fe.png)           
+6. 在“证书信息”页面上传通过 [外网访问](#stepwaiwang) 获取的 `out.csr` 文件。如下图所示：[](id:1)
+<img src="https://main.qcloudimg.com/raw/87d60ce40d8a630e138c36d674fd700b.png" alt="img" style="zoom:40%;" />  
+7. 下载 [上一步](#1) 申请到的证书，记为 USER_CERT。如下图所示：
 ![img](https://main.qcloudimg.com/raw/de368d437f5a1a27a8517da9807dfd0f.png)            
 
-
-
-经过上述步骤后，得到了访问域名（PROXY_URL）、NGINX证书（TLS_CERT）、out_sk和用户证书（USER_CERT），在后续的访问中需要使用到这些数据。除此之外，网络名、通道名、chaincodeName等信息的获取方式上一节相同。
+经过上述步骤后，得到了访问域名（PROXY_URL）、NGINX证书（TLS_CERT）、out_sk 和用户证书（USER_CERT），在后续的访问中需要使用到这些数据。除此之外，关于网络名、通道名、chaincodeName 等信息的获取方式，请参阅 [对接说明及对接前准备](https://cloud.tencent.com/document/product/663/47512)。
 
 ## tbaas-fabric-sdk-java
 
-[tbaas-fabric-sdk-java](https://tbaasdoc-1259695942.cos.ap-guangzhou.myqcloud.com/tbaas-fabric-sdk-java.zip)
-
-1. 配置基本参数
+下载 [tbaas-fabric-sdk-java](https://tbaasdoc-1259695942.cos.ap-guangzhou.myqcloud.com/tbaas-fabric-sdk-java.zip)。
+以下代码示例为不同步骤的代码编写：
+1. 配置基本参数。
 
 ```java
 // 通道名称
@@ -93,7 +104,7 @@ private static final String CHAINCODE_VERSION = "";
 private static final String CHAINCODE_PATH = "";
 ```
 
-2. 初始化用户并设置访问通道的默认用户
+2. 初始化用户并设置访问通道的默认用户。
 
 ```go
 FabricUser user = new FabricUser.Builder()
@@ -104,7 +115,7 @@ FabricUser user = new FabricUser.Builder()
 ChannelContext.setDefaultUser(user);
 ```
 
-3. 连接到通道
+3. 连接到通道。
 
 ```java
 Channel demoChannel = ChannelHandler.create()
@@ -115,13 +126,13 @@ Channel demoChannel = ChannelHandler.create()
         .init();
 ```
 
-4. 创建fabric模板
+4. 创建 fabric 模板。
 
 ```java
 FabricTemplate fabricTemplate = FabricTemplate.getInstance();
 ```
 
-5. 通过fabric模板快速获取通道内信息
+5. 通过 fabric 模板快速获取通道内信息。
 
 ```java
 // 查询通道内可发现的peer节点
@@ -132,7 +143,7 @@ List memberList = fabricTemplate.findMemberships(CHANNEL_NAME);
 List chainCodeList = fabricTemplate.findChainCodes(CHANNEL_NAME);
 ```
 
-6. 通过fabric模板调用合约
+6. 通过 fabric 模板调用合约。
 
 ```java
 // 调用智能合约query函数
@@ -152,4 +163,3 @@ FabricTransactResponse invokeResponse = fabricTemplate.transact(where(CHANNEL_NA
         .callFunc("invoke").addArgs(invoke), transactOptions);
 ```
 
-# 

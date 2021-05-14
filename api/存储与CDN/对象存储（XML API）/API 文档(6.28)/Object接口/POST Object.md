@@ -22,6 +22,8 @@ Date: GMT Date
 Content-Type: multipart/form-data; boundary=Multipart Boundary
 Content-Length: Content Length
 
+
+
 [Multipart Form Data]
 ```
 
@@ -31,21 +33,21 @@ Content-Length: Content Length
 
 **表单字段**
 
-| 名称                    | 描述                                                         | 类型   | 是否必选 |
-| ----------------------- | ------------------------------------------------------------ | ------ | -------- |
-| key                     | 对象键，可在对象键中指定`${filename}`通配符，此时将使用实际上传的文件的文件名替换对象键中的通配符，相关示例请参见本文档的 [案例七](#step7) | string | 是       |
-| Cache-Control           | RFC 2616 中定义的缓存指令，将作为对象元数据保存              | string | 否       |
-| Content-Disposition     | RFC 2616 中定义的文件名称，将作为对象元数据保存              | string | 否       |
-| Content-Encoding        | RFC 2616 中定义的编码格式，将作为对象元数据保存              | string | 否       |
-| Content-Type            | RFC 2616 中定义的 HTTP 内容类型（MIME），将作为对象元数据保存<br>**注意：**通过网页表单上传文件时，浏览器会自动把指定文件的 MIME 类型携带在请求中，但对象存储 COS 并不会使用浏览器携带的 MIME 类型，您需要显式指定 Content-Type 表单字段作为对象的内容类型 | string | 否       |
-| Expires                 | RFC 2616 中定义的缓存失效时间，将作为对象元数据保存          | string | 否       |
-| success_action_redirect | 上传成功时重定向的目标 URL 地址，如果设置，那么在上传成功时将返回 HTTP 状态码为303（Redirect）及 Location 响应头部，Location 响应头部的值为该字段指定的 URL 地址，并附加 bucket、key 和 etag 参数，相关示例请参见本文档的 [案例八](#step8) | string | 否       |
-| success_action_status   | 上传成功时返回的 HTTP 状态码，可选200、201或204，默认为204。如果指定了 success_action_redirect 字段，则此字段会被忽略。相关示例请参见本文档的 [案例九](#step9) | number | 否       |
-| x-cos-meta-\*           | 包括用户自定义元数据头部后缀和用户自定义元数据信息，将作为对象元数据保存，大小限制为2KB<br>**注意：**用户自定义元数据信息支持下划线（_），但用户自定义元数据头部后缀不支持下划线，仅支持减号（-） | string | 否       |
-| x-cos-storage-class     | 对象存储类型。枚举值请参见 [存储类型](https://cloud.tencent.com/document/product/436/33417) 文档，例如 MAZ_STANDARD、MAZ_STANDARD_IA、STANDARD_IA、ARCHIVE。默认值：STANDARD | Enum   | 否       |
-| x-cos-traffic-limit | 针对本次上传进行流量控制的限速值，必须为数字，单位默认为 bit/s。限速值设置范围为819200 - 838860800，即100KB/s - 100MB/s，如果超出该范围将返回400错误 | integer | 否       |
-| Content-MD5             | 经过 Base64 编码的文件内容 MD5 哈希值，用于完整性检查，验证文件内容在传输过程中是否发生变化 | string | 否       |
-| file                    | 文件的信息和内容，通过网页表单上传时，浏览器将自动设置该字段的值为正确的格式<br>**注意：**file 字段必须放在整个表单的最后面。 | file   | 是       |
+| 名称                    | 描述                                                         | 类型    | 是否必选 |
+| ----------------------- | ------------------------------------------------------------ | ------- | -------- |
+| key                     | 对象键，可在对象键中指定`${filename}`通配符，此时将使用实际上传的文件的文件名替换对象键中的通配符，相关示例请参见本文档的 [案例七](#step7) | string  | 是       |
+| Cache-Control           | RFC 2616 中定义的缓存指令，将作为对象元数据保存              | string  | 否       |
+| Content-Disposition     | RFC 2616 中定义的文件名称，将作为对象元数据保存              | string  | 否       |
+| Content-Encoding        | RFC 2616 中定义的编码格式，将作为对象元数据保存              | string  | 否       |
+| Content-Type            | RFC 2616 中定义的 HTTP 内容类型（MIME），将作为对象元数据保存<br>**注意：**通过网页表单上传文件时，浏览器会自动把指定文件的 MIME 类型携带在请求中，但对象存储 COS 并不会使用浏览器携带的 MIME 类型，您需要显式指定 Content-Type 表单字段作为对象的内容类型 | string  | 否       |
+| Expires                 | RFC 2616 中定义的缓存失效时间，将作为对象元数据保存          | string  | 否       |
+| success_action_redirect | 上传成功时重定向的目标 URL 地址，如果设置，那么在上传成功时将返回 HTTP 状态码为303（Redirect）及 Location 响应头部，Location 响应头部的值为该字段指定的 URL 地址，并附加 bucket、key 和 etag 参数，相关示例请参见本文档的 [案例八](#step8) | string  | 否       |
+| success_action_status   | 上传成功时返回的 HTTP 状态码，可选200、201或204，默认为204。如果指定了 success_action_redirect 字段，则此字段会被忽略。相关示例请参见本文档的 [案例九](#step9) | number  | 否       |
+| x-cos-meta-\*           | 包括用户自定义元数据头部后缀和用户自定义元数据信息，将作为对象元数据保存，大小限制为2KB<br>**注意：**用户自定义元数据信息支持下划线（_），但用户自定义元数据头部后缀不支持下划线，仅支持减号（-） | string  | 否       |
+| x-cos-storage-class     | 对象存储类型。枚举值请参见 [存储类型](https://cloud.tencent.com/document/product/436/33417) 文档，例如 MAZ_STANDARD、MAZ_STANDARD_IA、INTELLIGENT_TIERING、MAZ_INTELLIGENT_TIERING、STANDARD_IA、ARCHIVE、DEEP_ARCHIVE。默认值：STANDARD | Enum    | 否       |
+| x-cos-traffic-limit     | 针对本次上传进行流量控制的限速值，必须为数字，单位默认为 bit/s。限速值设置范围为819200 - 838860800，即100KB/s - 100MB/s，如果超出该范围将返回400错误 | integer | 否       |
+| Content-MD5             | 经过 Base64 编码的文件内容 MD5 哈希值，用于完整性检查，验证文件内容在传输过程中是否发生变化 | string  | 否       |
+| file                    | 文件的信息和内容，通过网页表单上传时，浏览器将自动设置该字段的值为正确的格式<br>**注意：**file 字段必须放在整个表单的最后面。 | file    | 是       |
 
 **访问控制列表（ACL）相关表单字段**
 
@@ -53,7 +55,7 @@ Content-Length: Content Length
 
 | 名称&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 描述                                                         | 类型   | 是否必选 |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ | -------- |
-| acl                                                          | 定义对象的访问控制列表（ACL）属性。枚举值请参见 [ACL 概述](https://cloud.tencent.com/document/product/436/30752#.E9.A2.84.E8.AE.BE.E7.9A.84-acl) 文档中对象的预设 ACL 部分，例如 default，private，public-read 等，默认为 default<br>**注意：**当前访问策略条目限制为1000条，如果您不需要进行对象 ACL 控制，请设置为 default 或者此项不进行设置，默认继承存储桶权限 | Enum   | 否       |
+| acl                                                          | 定义对象的访问控制列表（ACL）属性。枚举值请参见 [ACL 概述](https://cloud.tencent.com/document/product/436/30752#.E9.A2.84.E8.AE.BE.E7.9A.84-acl) 文档中对象的预设 ACL 部分，例如 default，private，public-read 等，默认为 default<br>**注意：**如果您不需要进行对象 ACL 控制，请设置为 default 或者此项不进行设置，默认继承存储桶权限 | Enum   | 否       |
 | x-cos-grant-read                                             | 赋予被授权者读取对象的权限，格式为 id="[OwnerUin]"，例如 id="100000000001"，可使用半角逗号（,）分隔多组被授权者，例如`id="100000000001",id="100000000002"` | string | 否       |
 | x-cos-grant-read-acp                                         | 赋予被授权者读取对象的访问控制列表（ACL）的权限，格式为 id="[OwnerUin]"，例如 id="100000000001"，可使用半角逗号（,）分隔多组被授权者，例如`id="100000000001",id="100000000002"` | string | 否       |
 | x-cos-grant-write-acp                                        | 赋予被授权者写入对象的访问控制列表（ACL）的权限，格式为 id="[OwnerUin]"，例如 id="100000000001"，可使用半角逗号（,）分隔多组被授权者，例如`id="100000000001",id="100000000002"` | string | 否       |
@@ -140,7 +142,6 @@ c. 拼接签名有效时间，格式为`StartTimestamp;EndTimestamp`，即为 Ke
 | q-sign-time                                                  | 上文所生成的 KeyTime                                         | 完全                                               | 是       |
 
 > ! 
->
 > - “策略”（Policy）中限定的除 bucket 以外的字段，都必须出现在表单字段中。例如限定了`{ "acl": "default" }`，那么表单中必须出现 acl 且值为 default。
 > - 基于安全考虑，强烈建议您对所有可以限定的表单字段进行限定。
 
@@ -160,16 +161,16 @@ c. 拼接签名有效时间，格式为`StartTimestamp;EndTimestamp`，即为 Ke
 
 将上述策略和签名相关信息，以下表中描述的方式附加到表单中：
 
-| 名称             | 描述                                   | 类型   | 是否必选 |
-| ---------------- | -------------------------------------- | ------ | -------- |
+| 名称                 | 描述                                                         | 类型   | 是否必选                                   |
+| -------------------- | ------------------------------------------------------------ | ------ | ------------------------------------------ |
 | x-cos-security-token | 使用临时安全凭证时需要传入的安全令牌字段，详情请参见 [临时安全凭证](https://cloud.tencent.com/document/product/436/31315#.E4.B8.B4.E6.97.B6.E5.AE.89.E5.85.A8.E5.87.AD.E8.AF.81) 相关说明 | string | 否，当使用临时<br>密钥时，此表单项为必选项 |
-| policy           | 经过 Base64 编码的“策略”（Policy）内容 | string | 是       |
-| q-sign-algorithm | 签名哈希算法，固定为 sha1              | string | 是       |
-| q-ak             | 上文所述的 SecretId                    | string | 是       |
-| q-key-time       | 上文所生成的 KeyTime                   | string | 是       |
-| q-signature      | 上文所生成的 Signature                 | string | 是       |
+| policy               | 经过 Base64 编码的“策略”（Policy）内容                       | string | 是                                         |
+| q-sign-algorithm     | 签名哈希算法，固定为 sha1                                    | string | 是                                         |
+| q-ak                 | 上文所述的 SecretId                                          | string | 是                                         |
+| q-key-time           | 上文所生成的 KeyTime                                         | string | 是                                         |
+| q-signature          | 上文所生成的 Signature                                       | string | 是                                         |
 
->!签名表单字段需要在 file 表单字段之前。
+> !签名表单字段需要在 file 表单字段之前。
 
 **签名保护实际案例**
 
@@ -253,7 +254,8 @@ c. 拼接签名有效时间，格式为`StartTimestamp;EndTimestamp`，即为 Ke
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 07:39:34 GMT
@@ -291,7 +293,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryZBPbaoYE2gqeB21N--
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -312,7 +315,8 @@ x-cos-request-id: NWQ2NzgxMzZfMmViMDJhMDlfY2NjOF84NGQz****
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 07:39:34 GMT
@@ -374,7 +378,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundary9JtEhEGHSdx8Patg--
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -395,7 +400,8 @@ x-cos-request-id: NWQ2NzgxMzdfM2NhZjJhMDlfMTQzYV84Nzhh****
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 07:39:35 GMT
@@ -437,7 +443,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryBVaHvBJQJnQrAxKY--
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -451,8 +458,6 @@ Location: http://examplebucket-1250000000.cos.ap-beijing.myqcloud.com/exampleobj
 Server: tencent-cos
 x-cos-request-id: NWQ2NzgxMzdfMTljMDJhMDlfNTg4ZF84Njgx****
 x-cos-server-side-encryption: AES256
-
-
 ```
 
 <span id="step4"></span>
@@ -461,7 +466,8 @@ x-cos-server-side-encryption: AES256
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 07:39:36 GMT
@@ -511,9 +517,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryYa6H7Gd4xuhlyfJb--
-
-
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -528,8 +533,6 @@ Server: tencent-cos
 x-cos-request-id: NWQ2NzgxMzhfMzdiMDJhMDlfNDA4YV84MzQx****
 x-cos-server-side-encryption-customer-algorithm: AES256
 x-cos-server-side-encryption-customer-key-MD5: U5L61r7jcwdNvT7frmUG8g==
-
-
 ```
 
 <span id="step5"></span>
@@ -538,7 +541,8 @@ x-cos-server-side-encryption-customer-key-MD5: U5L61r7jcwdNvT7frmUG8g==
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 07:40:07 GMT
@@ -576,9 +580,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryJspR3QIUhGJLALwf--
-
-
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -592,8 +595,6 @@ Location: http://examplebucket-1250000000.cos.ap-beijing.myqcloud.com/exampleobj
 Server: tencent-cos
 x-cos-request-id: NWQ2NzgxNTdfNzFiNDBiMDlfMmE3ZmJfODQ1****
 x-cos-version-id: MTg0NDUxNzcwMDkzMDE3NDQ0MDU
-
-
 ```
 
 <span id="step6"></span>
@@ -602,7 +603,8 @@ x-cos-version-id: MTg0NDUxNzcwMDkzMDE3NDQ0MDU
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 07:40:38 GMT
@@ -640,9 +642,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryX8hd2lxTMzIBk5Li--
-
-
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -655,7 +656,6 @@ ETag: "ee8de918d05640145b18f70f4c3aa602"
 Location: http://examplebucket-1250000000.cos.ap-beijing.myqcloud.com/exampleobject
 Server: tencent-cos
 x-cos-request-id: NWQ2NzgxNzZfMjFjOTBiMDlfMWY3YTFfNjY2****
-
 ```
 
 <span id="step7"></span>
@@ -664,7 +664,8 @@ x-cos-request-id: NWQ2NzgxNzZfMjFjOTBiMDlfMWY3YTFfNjY2****
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 12:35:07 GMT
@@ -702,8 +703,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryHrAMWZO4BNyT0rca--
-
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -716,7 +717,6 @@ ETag: "ee8de918d05640145b18f70f4c3aa602"
 Location: http://examplebucket-1250000000.cos.ap-beijing.myqcloud.com/folder/subfolder/photo.jpg
 Server: tencent-cos
 x-cos-request-id: NWQ2N2M2N2NfNWZhZjJhMDlfNmUzMV84OTg4****
-
 ```
 
 <span id="step8"></span>
@@ -725,7 +725,8 @@ x-cos-request-id: NWQ2N2M2N2NfNWZhZjJhMDlfNmUzMV84OTg4****
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 08:02:29 GMT
@@ -767,7 +768,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryJ0bRH1MwgMq5eu6H--
-```
+:::
+</dx-codeblock>
 
 #### 响应
 
@@ -788,7 +790,8 @@ x-cos-request-id: NWQ2Nzg2OTVfMTRiYjI0MDlfZGFkOV85MDA4****
 
 #### 请求
 
-```shell
+<dx-codeblock>
+:::  shell
 POST / HTTP/1.1
 Host: examplebucket-1250000000.cos.ap-beijing.myqcloud.com
 Date: Thu, 29 Aug 2019 08:04:29 GMT
@@ -830,7 +833,8 @@ Content-Type: image/jpeg
 
 [Object Content]
 ------WebKitFormBoundaryST9Mz8AGzCDphgJF--
-```
+:::
+</dx-codeblock>
 
 #### 响应
 

@@ -45,7 +45,7 @@
 | MemHeapUsedM                                  | MB       | JVM 当前已经使用的 HeapMemory 的大小                 |
 | MemHeapCommittedM                             | MB       | JVM HeapMemory 提交大小                              |
 | MemHeapMaxM                                   | MB       | JVM 配置的 HeapMemory 的大小                         |
-| MemMaxM                                       | MB       | JVM 运行时的可以使用的最大的内存的大小               |
+| MemMaxM                                       | MB       | JVM 运行时可以使用的最大内存大小               |
 | BlockReportAvgTime                            | 次/s     | 每秒处理 DataNode Blcok 平均延迟                     |
 | FGC                                           | 1/s      | Full GC 次数                                         |
 | YGC                                           | 2/s      | Young GC 次数                                        |
@@ -109,6 +109,8 @@
 | PeakThreadCount                               | 个       | 峰值线程数                                           |
 | ThreadCount                                   | 个       | 线程数量                                             |
 | DaemonThreadCount                             | 个       | 后台线程数量                                         |
+| RpcQueueTimeAvgTime      | ms   | RPC 平均延迟时间     |
+| RpcProcessingTimeAvgTime | ms   | RPC 请求平均处理时间 |
 
 ### HDFS-DataNode
 
@@ -157,14 +159,14 @@
 | RamDiskBlocksEvicted                    | 块/s     | 内存中被清除的块总数                       |
 | RamDiskBlocksEvictedWithoutRead         | 块/s     | 从内存中取出的内存块总数          |
 | RamDiskBlocksLazyPersisted              | 块/s     | 惰性写入器写入磁盘的总数                   |
-| RamDiskBytesLazyPersisted               | Bytes/s  | 由懒惰写入器写入磁盘的总字节数             |
+| RamDiskBytesLazyPersisted               | Bytes/s  | 由惰性写入器写入磁盘的总字节数             |
 | RamDiskBytesWrite                       | Bytes/s  | 写入内存的总字节数                         |
 | MemNonHeapUsedM                         | MB       | JVM 当前已经使用的 NonHeapMemory 的大小    |
 | MemNonHeapCommittedM                    | MB       | JVM 配置的 NonHeapCommittedM 的大小        |
 | MemHeapUsedM                            | MB       | JVM 当前已经使用的 HeapMemory 的大小       |
 | MemHeapCommittedM                       | MB       | JVM HeapMemory 提交大小                    |
 | MemHeapMaxM                             | MB       | JVM 配置的 HeapMemory 的大小               |
-| MemMaxM                                 | MB       | JVM 运行时的可以使用的最大的内存的大小     |
+| MemMaxM                                 | MB       | JVM 运行时可以使用的最大内存大小     |
 | ThreadsNew                              | 个       | 处于新建状态的线程数量                     |
 | ThreadsRunnable                         | 个       | 处于可运行状态的线程数量                   |
 | ThreadsBlocked                          | 个       | 处于阻塞状态的线程数量                     |
@@ -205,6 +207,8 @@
 | read                                    | 次/s     | 读操作 QPS                                 |
 | FsyncNanosOps                           | 次/s     | Fsync 操作平均次数                         |
 | DataPacketOps                           | 次/s     | 包传输操作 QPS                              |
+| RpcQueueTimeAvgTime      | ms   | RPC 平均延迟时间     |
+| RpcProcessingTimeAvgTime | ms   | RPC 请求平均处理时间 |
 
 ### HDFS-Journal Node 
 
@@ -215,7 +219,7 @@
 | MemHeapUsedM               | MB       | JVM 当前已经使用的 HeapMemory 的大小    |
 | MemHeapCommittedM          | MB       | JVM HeapMemory 提交大小                 |
 | MemHeapMaxM                | MB       | JVM 配置的 HeapMemory 的大小            |
-| MemMaxM                    | MB       | JVM 运行时的可以使用的最大的内存的大小  |
+| MemMaxM                    | MB       | JVM 运行时可以使用的最大内存大小  |
 | ThreadsNew                 | 个       | 处于新建状态的线程数量                  |
 | ThreadsRunnable            | 个       | 处于可运行状态的线程数量                |
 | ThreadsBlocked             | 个       | 处于阻塞状态的线程数量                  |
@@ -268,3 +272,8 @@
 | YGCT     | s        | Young GC 消耗时间                     |
 | FGCT     | s        | Full GC 消耗时间                      |
 | GCT      | s        | 垃圾回收时间消耗                      |
+
+
+
+
+
